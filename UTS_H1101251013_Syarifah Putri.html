@@ -1,0 +1,145 @@
+<DOCTYPE html>
+<html>
+<head>
+    <tittle>Form Pendaftaran Ekstrakulikuler</tittle>
+
+    <style>
+         header {
+            background-color: blanchedalmond;
+            color:#ed67a1;
+            text-align: center;
+            padding: 20px;
+            border-radius: 30px;
+         }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #89dcff;
+        }
+
+        .kotak {
+            background: #f8c8de;
+            padding: 50px;
+            border-radius: 30px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 16px;
+            background: #fe77b2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        fieldset {
+            margin-top: 10px 5px;
+
+        }
+
+        .hasil {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Ekstrakurikuler SMA Negeri 1 Pontianak</h1>
+    <p>Nama: Syarifah Putri</p>
+    <p>NIM: H1101251013</p>
+    <p>Prodi: Sistem Informasi</p>
+</header>
+
+<main>
+
+<section class="kotak">
+    
+    <label>Nama:</label><br>
+    <input type="text" id="nama"><br>
+
+    <label>Kelas:</label><br>
+    <input type="text" id="kelas"><br>
+
+    <fieldset>
+        <legend>Pilih Ekskul</legend>
+
+        <input type="radio" name="ekskul" value="Basket">
+        Basket
+        <br>
+
+        <input type="radio" name="ekskul" value="Programming">
+        Programming
+
+        <input type="radio" name="ekskul" value="Desain">
+        Desain
+
+    </fieldset>
+
+    <label>Alasan: </label><br>
+    <textarea id="alasan"></textarea><br>
+
+    <button onclick="daftar()">Daftar</button>
+
+    <div class="hasil" id="hasil"></div>
+
+</section>
+
+</main>
+
+<footer>
+    <p>Ekstrakuliler SMA Negeri 1 Pontianak</p>
+</footer>
+
+
+<script>
+
+function daftar() {
+    let nama = document.getElementById("nama").value;
+    let kelas = document.getElementById("kelas").value;
+    let alasan = document.getElementById("alasan").value;
+    let ekskul = document.querySelector('input[name="ekskul"]:checked');
+
+    if (nama == "" || kelas == "" || alasan == "" || ekskul == null) {
+        alert("Semua data harus diisi!");
+        return;
+    }
+
+    document.getElementById("hasil").innerHTML =
+        "<h3>Data Pendaftaran</h3>" +
+        "Nama: " + nama + "<br>" +
+        "Kelas: " + kelas + "<br>" +
+        "Ekskul: " + ekskul.value + "<br>" +
+        "Alasan: " + alasan;
+
+    document.getElementById("nama").value = "";
+    document.getElementById("kelas").value = "";
+    document.getElementById("alasan").value = "";
+    ekskul.checked = false;
+}   
+
+</script>
+
+</body>
+</html>
